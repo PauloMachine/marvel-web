@@ -85,7 +85,7 @@ const Character = () => {
                 data-testid="comics-title"
               >{`${translate("comics", "Quadrinhos")}: ${character.comics?.items?.length}`}</Typography>
               {character.comics?.items?.map((comic: Item, index: number) => (
-                <Typography key={index} data-testid={`comic-${index}`}>
+                <Typography style={{ fontSize: 14 }} key={index} data-testid={`comic-${index}`}>
                   - {comic.name}
                 </Typography>
               ))}
@@ -106,7 +106,7 @@ const Character = () => {
                 data-testid="series-title"
               >{`${translate("series", "Séries")}: ${character.series?.items?.length}`}</Typography>
               {character.series?.items?.map((series: Item, index: number) => (
-                <Typography key={index} data-testid={`series-${index}`}>
+                <Typography style={{ fontSize: 14 }} key={index} data-testid={`series-${index}`}>
                   - {series.name}
                 </Typography>
               ))}
