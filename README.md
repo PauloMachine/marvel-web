@@ -1,46 +1,82 @@
-# Getting Started with Create React App
+# Marvel Web
+A web application that consumes the Marvel API to list characters, comics, and series. Developed as a test for the company Beta Sistemas.
+Demo: https://marvelkanastrasantiago.netlify.app/
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features
+- Search for Marvel characters.
+- Display character details, including associated series and comics.
+- Toggle between light and dark themes, with user preference persistence.
 
-## Available Scripts
+## Technologies Used
+- React: JavaScript library for building user interfaces.
+- Styled-components: Library for styling components using CSS-in-JS.
+- React Router DOM: Route management in the React application.
+- Axios: HTTP client for making requests to the Marvel API.
+- Dotenv: Loads environment variables from a .env file.
+- MD5: Used for generating hashes required for authentication with the Marvel API.
 
-In the project directory, you can run:
+## Prerequisites
+- Node.js: Ensure Node.js is installed on your machine (v22+).
+- Package Manager: npm or yarn.
 
-### `npm start`
+## How to Run the Project
+1. Clone the repository:
+```bash
+ git clone https://github.com/PauloMachine/marvel-web.git
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+2. Navigate to the project directory:
+```bash
+cd marvel-web
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+3. Install dependencies:
+```bash
+npm install
+```
+or
+```bash
+yarn install
+```
 
-### `npm test`
+4. Configure environment variables:
+- Create a .env file in the root of the project.
+- Add the following variables to the .env file:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+REACT_APP_MARVEL_URL="https://gateway.marvel.com"
+REACT_APP_MARVEL_PUBLIC_KEY=your_public_key
+REACT_APP_MARVEL_PRIVATE_KEY=your_private_key
+```
 
-### `npm run build`
+Replace your_public_key and your_private_key with your Marvel API keys.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+5. Start the application:
+```bash
+npm start
+```
+or
+```bash
+yarn start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The application will be available at `http://localhost:3000`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Project Structure
+The project is structured as follows:
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+marvel-web/
+├── public/                 # Public files
+├── src/
+│   ├── components/         # Reusable components
+│   ├── pages/              # Application pages
+│   ├── services/           # Services for API communication
+│   ├── styles/             # Global styles and themes
+│   ├── utils/              # Utilities and helpers
+│   └── App.js              # Main component
+├── .env                    # Environment variables
+├── .gitignore              # Git ignored files
+├── package.json            # Project dependencies and scripts
+└── README.md               # Project documentation
+```
