@@ -29,7 +29,7 @@ const Navbar = () => {
           <Input
             value={name}
             onChange={(search: string) => setName(search)}
-            placeholder={translate("searchCharacter", { defaultValue: "Procurar personagem" })}
+            placeholder={translate("searchCharacter") || "Procurar personagem"}
             icon="MdSearch"
           />
         )}
