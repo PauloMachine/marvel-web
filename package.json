@@ -31,6 +31,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint --quiet --cache --ignore-path .gitignore .",
@@ -56,9 +58,12 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@cypress/webpack-preprocessor": "^6.0.2",
     "@eslint/js": "^9.0.0",
+    "@types/cypress": "^0.1.6",
     "@types/md5": "^2.3.5",
     "@types/styled-components": "^5.1.34",
+    "cypress": "^13.16.0",
     "eslint": "^8.0.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",

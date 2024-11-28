@@ -10,6 +10,7 @@ const Input = ({
   debounceDelay = 300,
   style,
   icon = "MdSearch",
+  ...props
 }: TInput) => {
   const [debouncedValue, setDebouncedValue] = useState(value);
 
@@ -46,6 +47,7 @@ const Input = ({
         placeholder={placeholder}
         onChange={handleInputChange}
         style={style}
+        {...props}
       />
     </StyledFlex>
   );

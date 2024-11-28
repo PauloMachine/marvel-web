@@ -17,9 +17,10 @@
     "jsx": "react-jsx",
     "baseUrl": "./",
     "paths": {
-      "src/*": ["src/*"]
+      "src/*": ["src/*"],
+      "@tests/*": ["src/tests/*"]
     },
-    "types": ["react", "react-dom"]
+    "types": ["react", "react-dom", "cypress"]
   },
-  "include": ["src", "setupTests.ts"]
+  "include": ["src", "src/tests/**/*.ts"]
 }

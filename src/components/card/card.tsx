@@ -7,7 +7,7 @@ const Card = ({ image, label, onClick }: TCard) => {
       <ImageWrapper>
         <Image src={image} alt={label} />
       </ImageWrapper>
-      <Label>{label}</Label>
+      <Label data-testid="character-name">{label}</Label>
     </CardContainer>
   );
 };

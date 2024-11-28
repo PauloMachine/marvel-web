@@ -32,13 +32,7 @@ const Characters = () => {
   }, [characters, setTotal, name, setPage]);
 
   return (
-    <Flex
-      direction="column"
-      wrap="wrap"
-      align="center"
-      justify="center"
-      gap="50px"
-    >
+    <Flex wrap="wrap" align="center" justify="center" gap="50px">
       <Typography>{translate("charactersLabel", "Personagens")}</Typography>
       <Flex
         direction="row"

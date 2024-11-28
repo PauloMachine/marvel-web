@@ -43,10 +43,10 @@ cd marvel-web
 npm install
 ```
 
-or
+- For any version conflict issues, run:
 
 ```bash
-yarn install
+npm install --legacy-peer-deps --force
 ```
 
 4. Configure environment variables:
@@ -68,13 +68,13 @@ Replace your_public_key and your_private_key with your Marvel API keys.
 npm start
 ```
 
-or
+The application will be available at `http://localhost:3000`.
+
+## How to Run the Tests
 
 ```bash
-yarn start
+npm run cypress:open
 ```
-
-The application will be available at `http://localhost:3000`.
 
 ## Project Structure
 
@@ -87,6 +87,7 @@ marvel-web/
 │   ├── components/         # Reusable components
 │   ├── pages/              # Application pages
 │   ├── services/           # Services for API communication
+│   ├── tests /             # Application tests
 │   ├── styles/             # Global styles and themes
 │   ├── utils/              # Utilities and helpers
 │   └── App.js              # Main component
