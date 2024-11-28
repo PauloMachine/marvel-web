@@ -1,10 +1,8 @@
-import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import { useEffect, useRef } from "react";
 import { useCharacters } from "./characters.hooks";
 import { usePagination } from "src/components/paginator/pagination.context";
 import { useFilter } from "src/components/filter/filter.context";
 import Flex from "src/components/ui/flex";
-import { Typography } from "./characters.styles";
 import CharactersChart from "./characters-chart";
 import CharactersError from "./characters-error";
 import CharactersLoading from "./characters-loading";
@@ -12,7 +10,6 @@ import CharactersEmpty from "./characters-empty-state";
 import CharactersCard from "./characters-card";
 
 const Characters = () => {
-  const { t: translate } = useTranslation();
   const { limit, offset, setTotal, setPage } = usePagination();
   const { name } = useFilter();
   const {
@@ -26,14 +23,21 @@ const Characters = () => {
     orderBy: "name",
   });
 
+  const prevNameRef = useRef(name);
+
   useEffect(() => {
-    if (characters) setTotal(characters.total);
-    if (name) setPage(1);
-  }, [characters, setTotal, name, setPage]);
+    if (characters) {
+      setTotal(characters.total);
+
+      if (name !== prevNameRef.current) {
+        setPage(1);
+        prevNameRef.current = name;
+      }
+    }
+  }, [characters, name, setTotal, setPage]);
 
   return (
     <Flex wrap="wrap" align="center" justify="center" gap="50px">
-      <Typography>{translate("charactersLabel", "Personagens")}</Typography>
       <Flex
         direction="row"
         wrap="wrap"

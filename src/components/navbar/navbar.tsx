@@ -38,6 +38,7 @@ const Navbar = () => {
           <Input
             value={name}
             onChange={(search: string) => setName(search)}
+            onClear={() => setName("")}
             placeholder={translate("searchCharacter") || "Procurar personagem"}
             icon="MdSearch"
             data-testid="navbar-search-input"

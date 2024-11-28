@@ -3,17 +3,15 @@ import Card from "src/components/card";
 import { hasImagemAvailable } from "./characters.utils";
 import type { TCharacter, TCharacters } from "./characters.types";
 import { useNavigate } from "react-router-dom";
-import { useFilter } from "src/components/filter/filter.context";
 
 const CharactersCard = ({ characters }: TCharacters) => {
   const { t: translate } = useTranslation();
   const navigate = useNavigate();
-  const { setName } = useFilter();
 
   const handleCharacter = (characterId?: number) => {
     if (characterId) {
-      setName("");
       navigate(`/characters/${characterId}`);
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
