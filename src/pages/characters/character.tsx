@@ -27,12 +27,14 @@ const Character = () => {
       gap="50px"
       wrap="wrap"
       style={{ width: "100%" }}
+      data-testid="character-page"
     >
       <FaArrowLeft
         size={30}
         color="fff"
         onClick={handleCharacters}
         style={{ cursor: "pointer" }}
+        data-testid="back-button"
       />
       <Flex
         direction="row"
@@ -41,9 +43,10 @@ const Character = () => {
         gap="50px"
         wrap="wrap"
         style={{ width: "100%" }}
+        data-testid="character-content"
       >
-        {isFetching && <CharacterLoading />}
-        {isError && <CharactersError />}
+        {isFetching && <CharacterLoading data-testid="loading-state" />}
+        {isError && <CharactersError data-testid="error-state" />}
         {!isFetching && character && (
           <>
             <Card
@@ -51,8 +54,12 @@ const Character = () => {
               label={translate(`characters.${character.name}`, {
                 defaultValue: character.name,
               })}
+              data-testid="character-card"
             />
-            <Typography style={{ textWrap: "wrap" }}>
+            <Typography
+              style={{ textWrap: "wrap" }}
+              data-testid="character-description"
+            >
               {character?.description ||
                 translate("noDescription", "Personagem sem descrição")}
             </Typography>
@@ -68,6 +75,7 @@ const Character = () => {
           gap="10px"
           wrap="wrap"
           style={{ width: "100%" }}
+          data-testid="character-extra-info"
         >
           {character.comics?.items?.length! > 0 && (
             <Flex
@@ -76,12 +84,16 @@ const Character = () => {
               justify="center"
               gap="10px"
               wrap="wrap"
+              data-testid="character-comics"
             >
               <Typography
                 style={{ fontSize: 40, color: "#ff232a" }}
+                data-testid="comics-title"
               >{`${translate("comics", "Quadrinhos")}: ${character.comics?.items?.length}`}</Typography>
-              {character.comics?.items?.map((comic: Item) => (
-                <Typography>- {comic.name}</Typography>
+              {character.comics?.items?.map((comic: Item, index: number) => (
+                <Typography key={index} data-testid={`comic-${index}`}>
+                  - {comic.name}
+                </Typography>
               ))}
             </Flex>
           )}
@@ -93,12 +105,16 @@ const Character = () => {
               justify="center"
               gap="10px"
               wrap="wrap"
+              data-testid="character-series"
             >
               <Typography
                 style={{ fontSize: 40, color: "#ff232a" }}
+                data-testid="series-title"
               >{`${translate("series", "Séries")}: ${character.series?.items?.length}`}</Typography>
-              {character.series?.items?.map((series: Item) => (
-                <Typography>- {series.name}</Typography>
+              {character.series?.items?.map((series: Item, index: number) => (
+                <Typography key={index} data-testid={`series-${index}`}>
+                  - {series.name}
+                </Typography>
               ))}
             </Flex>
           )}

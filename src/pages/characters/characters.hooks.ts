@@ -17,7 +17,7 @@ export const useCharacters = ({
     queryFn: () => getCharacters({ offset, limit, name, orderBy }),
     refetchOnWindowFocus: false,
     staleTime: 1000 * 60 * 60,
-    cacheTime: 1000 * 60 * 60 * 24,
+    gcTime: 1000 * 60 * 60,
     onError: (error: Error) => {
       console.error("Error useCharacters:", error.message);
     },
@@ -35,6 +35,7 @@ export const useCharacter = (characterId: number) => {
     enabled: !!characterId,
     refetchOnWindowFocus: false,
     staleTime: 1000 * 60 * 5,
+    gcTime: 1000 * 60 * 60,
     onError: (error: Error) => {
       console.error("Error useCharacter:", error.message);
     },

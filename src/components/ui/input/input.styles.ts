@@ -24,7 +24,7 @@ export const StyledFlex = styled.div<TFlex>`
 export const StyledInput = styled.input<TStyledInput>`
   padding: 10px;
   border: 0;
-  width: 500px;
+  width: 200px;
   box-sizing: border-box;
   height: 50px;
   background-color: transparent;

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import type { TFilterContext, TFilterProvider } from "./filter.types";
 
 const FilterContext = createContext<TFilterContext | undefined>(undefined);
