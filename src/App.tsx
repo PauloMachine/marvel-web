@@ -8,6 +8,7 @@ const App = () => {
     <Routes>
       <Route path="/" Component={Characters} />
       <Route path="/characters/:id" Component={Character} />
+      <Route path="*" Component={Characters} />
     </Routes>
   );
 };
