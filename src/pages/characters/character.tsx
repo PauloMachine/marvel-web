@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useCharacter } from "./characters.hooks";
-import { Typography } from "./characters.styles";
+import { Container, Typography } from "./characters.styles";
 import Flex from "src/components/ui/flex";
 import { hasImagemAvailable } from "./characters.utils";
 import type { Item } from "./characters.types";
@@ -68,13 +68,7 @@ const Character = () => {
       </Flex>
 
       {!isFetching && character && (
-        <Flex
-          direction="row"
-          align="flex-start"
-          justify="space-around"
-          gap="10px"
-          wrap="wrap"
-          style={{ width: "100%" }}
+        <Container
           data-testid="character-extra-info"
         >
           {character.comics?.items?.length! > 0 && (
@@ -118,7 +112,7 @@ const Character = () => {
               ))}
             </Flex>
           )}
-        </Flex>
+        </Container>
       )}
     </Flex>
   );
