@@ -44,6 +44,7 @@ const Characters = () => {
         align="center"
         justify="center"
         gap="10px"
+        style={{ minHeight: 600 }}
       >
         {isFetching && <CharactersLoading limit={limit} />}
         {isError && <CharactersError />}

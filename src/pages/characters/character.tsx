@@ -26,7 +26,7 @@ const Character = () => {
       justify="center"
       gap="50px"
       wrap="wrap"
-      style={{ width: "100%" }}
+      style={{ width: "100%", minHeight: 600 }}
       data-testid="character-page"
     >
       <FaArrowLeft
@@ -37,7 +37,7 @@ const Character = () => {
         data-testid="back-button"
       />
       <Flex
-        direction="row"
+        direction="column"
         align="center"
         justify="center"
         gap="50px"
