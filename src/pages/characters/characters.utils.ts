@@ -11,15 +11,19 @@ export const hasImagemAvailable = ({ thumbnail }: Thumbnail) => {
 
 export const formatBubbleData = (characters: TCharacter[] | undefined) => {
   const bubbleData: TBubbleData[] =
-    characters?.map((character: TCharacter) => ({
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: (character.comics?.available ?? 0) + 10,
-      label: character.name
-        ? `Nome: ${character.name}\nHistória em quadrinhos: ${character.comics?.available}`
-        : "Personagem desconhecido",
-      image: hasImagemAvailable({ thumbnail: character?.thumbnail }),
-    })) || [];
+    characters?.map((character: TCharacter) => {
+      const size = (character.comics?.available ?? 0) + 10;
+
+      return {
+        x: Math.random() * (100 - size / 10),
+        y: Math.random() * (100 - size / 10),
+        size,
+        label: character.name
+          ? `Nome: ${character.name}\nHistória em quadrinhos: ${character.comics?.available}`
+          : "Personagem desconhecido",
+        image: hasImagemAvailable({ thumbnail: character?.thumbnail }),
+      };
+    }) || [];
 
   return bubbleData;
 };

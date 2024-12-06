@@ -47,4 +47,3 @@ export const Container = styled(Flex)`
     justify-content: center;
   }
 `;
-
