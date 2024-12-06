@@ -7,8 +7,8 @@ import type { Item } from "./characters.types";
 import Card from "src/components/card";
 import { useTranslation } from "react-i18next";
 import { FaArrowLeft } from "react-icons/fa";
-import CharactersError from "./characters-error";
-import CharacterLoading from "./character-loading";
+import CharactersError from "./states/characters-error";
+import CharacterLoading from "./states/character-loading";
 
 const Character = () => {
   const { t: translate } = useTranslation();

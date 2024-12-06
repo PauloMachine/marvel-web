@@ -1,13 +1,12 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useReducer, useRef } from "react";
+import {
+  CharactersReducer,
+  InitialCharactersState,
+} from "./states/characters-reducer";
 import { useCharacters } from "./characters.hooks";
 import { usePagination } from "src/components/paginator/pagination.context";
 import { useFilter } from "src/components/filter/filter.context";
 import Flex from "src/components/ui/flex";
-import CharactersChart from "./characters-chart";
-import CharactersError from "./characters-error";
-import CharactersLoading from "./characters-loading";
-import CharactersEmpty from "./characters-empty-state";
-import CharactersCard from "./characters-card";
 
 const Characters = () => {
   const { limit, offset, setTotal, setPage } = usePagination();
@@ -23,18 +22,33 @@ const Characters = () => {
     orderBy: "name",
   });
 
+  const [state, dispatch] = useReducer(
+    CharactersReducer,
+    InitialCharactersState,
+  );
   const prevNameRef = useRef(name);
 
   useEffect(() => {
-    if (characters) {
+    if (isFetching) dispatch({ type: "isFetching", payload: { limit } });
+    else if (isError) dispatch({ type: "isError" });
+    else if (characters) {
       setTotal(characters.total);
 
       if (name !== prevNameRef.current) {
         setPage(1);
         prevNameRef.current = name;
       }
+
+      if (characters.total === 0) {
+        dispatch({ type: "isEmpty", payload: { name } });
+      } else {
+        dispatch({
+          type: "isSuccess",
+          payload: { characters: characters.results },
+        });
+      }
     }
-  }, [characters, name, setTotal, setPage]);
+  }, [isFetching, isError, characters, name, limit, setTotal, setPage]);
 
   return (
     <Flex wrap="wrap" align="center" justify="center" gap="50px">
@@ -46,18 +60,8 @@ const Characters = () => {
         gap="10px"
         style={{ minHeight: 600 }}
       >
-        {isFetching && <CharactersLoading limit={limit} />}
-        {isError && <CharactersError />}
-        {!isFetching && characters?.total === 0 && (
-          <CharactersEmpty name={name} />
-        )}
-        {!isFetching && characters && characters.total > 0 && (
-          <CharactersCard characters={characters.results} />
-        )}
+        {state.component}
       </Flex>
-      {!isFetching && characters && characters.total !== 0 && (
-        <CharactersChart characters={characters?.results} />
-      )}
     </Flex>
   );
 };

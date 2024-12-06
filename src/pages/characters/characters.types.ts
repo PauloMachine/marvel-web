@@ -78,3 +78,16 @@ export type TCharactersEmpty = {
 export type TCharactersLoading = {
   limit: number;
 };
+
+export type CharactersAction =
+  | { type: "isFetching"; payload: { limit: number } }
+  | { type: "isError" }
+  | { type: "isEmpty"; payload: { name: string } }
+  | {
+      type: "isSuccess";
+      payload: { characters: TCharacter[] };
+    };
+
+export type CharactersState = {
+  component: React.ReactNode;
+};
