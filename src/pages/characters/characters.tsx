@@ -29,9 +29,11 @@ const Characters = () => {
   const prevNameRef = useRef(name);
 
   useEffect(() => {
-    if (isFetching) dispatch({ type: "isFetching", payload: { limit } });
-    else if (isError) dispatch({ type: "isError" });
-    else if (characters) {
+    if (isFetching) {
+      dispatch({ type: "isFetching", payload: { limit } });
+    } else if (isError) {
+      dispatch({ type: "isError" });
+    } else if (characters) {
       setTotal(characters.total);
 
       if (name !== prevNameRef.current) {
